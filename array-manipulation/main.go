@@ -4,7 +4,6 @@ import (
 	"bufio"
 	"fmt"
 	"io"
-	"math"
 	"os"
 	"strconv"
 	"strings"
@@ -12,24 +11,25 @@ import (
 
 // Complete the arrayManipulation function below.
 func arrayManipulation(n int32, queries [][]int32) int64 {
+	arr := make([]int64, n+1)
 
-	result := make([]int64, n, n)
-
-	for _, q := range queries {
-		plus := int64(q[2])
-
-		for i := q[0] - 1; i <= q[1]-1; i++ {
-			result[i] += plus
+	for _, e := range queries {
+		a := int(e[0])
+		b := e[1]
+		k := int64(e[2])
+		arr[a] += k
+		if (b + 1) <= n {
+			arr[b+1] -= k
 		}
 	}
 
-	var max int64 = math.MinInt64
-	for _, r := range result {
-		if r > max {
-			max = r
+	var x, max int64 = 0, 0
+	for i := 1; i <= int(n); i++ {
+		x += arr[i]
+		if max < x {
+			max = x
 		}
 	}
-
 	return max
 }
 
