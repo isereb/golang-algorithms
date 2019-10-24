@@ -15,8 +15,6 @@ func arrayManipulation(n int32, queries [][]int32) int64 {
 
 	result := make([]int64, n, n)
 
-	prevSum := 0
-
 	for _, q := range queries {
 		plus := int64(q[2])
 
