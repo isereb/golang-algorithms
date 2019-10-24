@@ -10,6 +10,7 @@ import (
 )
 
 // Complete the arrayManipulation function below.
+// https://www.hackerrank.com/challenges/crush/problem
 func arrayManipulation(n int32, queries [][]int32) int64 {
 	arr := make([]int64, n+1)
 
